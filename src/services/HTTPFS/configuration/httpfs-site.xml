@@ -27,4 +27,60 @@
 			<selection-cardinality>1</selection-cardinality>
 		</value-attributes>
 	</property>
+	<property>
+		<name>httpfs.authentication.signature.secret.file</name>
+		<value>${httpfs.config.dir}/httpfs-signature.secret</value>
+		<description>File containing the secret to sign HttpFS hadoop-auth cookies. This file should be readable only by the system user running HttpFS service. If multiple HttpFS servers are used in a load-balancer/round-robin fashion, they should share the secret file.</description>
+	</property>
+	<property>
+		<name>kerberos.realm</name>
+		<value></value>
+		<display-name>Kerberos realm</display-name>
+		<value-attributes>
+			<empty-value-valid>true</empty-value-valid>
+		</value-attributes>
+		<description>Kerberos realm, used only if Kerberos authentication is used between the clients and httpfs or between HttpFS and HDFS. This property is only used to resolve other properties within this configuration file.</description>
+	</property>
+	<property>
+		<name>httpfs.authentication.kerberos.principal</name>
+		<value></value>
+		<display-name>SPNEGO principal</display-name>
+		<description>The HTTP Kerberos principal used by HttpFS in the HTTP endpoint. The HTTP Kerberos principal MUST start with 'HTTP/' per Kerberos HTTP SPNEGO specification.</description>
+		<value-attributes>
+			<empty-value-valid>true</empty-value-valid>
+		</value-attributes>
+	</property>
+	<property>
+		<name>httpfs.authentication.kerberos.keytab</name>
+		<value></value>
+		<display-name>SPNEGO keytab</display-name>
+		<description>The Kerberos keytab file with the credentials for the HTTP Kerberos principal used by httpfs in the HTTP endpoint.</description>
+		<value-attributes>
+			<empty-value-valid>true</empty-value-valid>
+		</value-attributes>
+	</property>
+	<property>
+		<name>httpfs.hadoop.authentication.kerberos.keytab</name>
+		<value></value>
+		<display-name>HttpFS kerberos keytab</display-name>
+		<description>The Kerberos keytab file with the credentials for the Kerberos principal used by httpfs to connect to the HDFS Namenode.</description>
+		<value-attributes>
+			<empty-value-valid>true</empty-value-valid>
+		</value-attributes>
+	</property>
+	<property>
+		<name>httpfs.hadoop.authentication.kerberos.principal</name>
+		<value></value>
+		<display-name>HttpFS kerberos princial</display-name>
+		<description>The Kerberos principal used by httpfs to connect to the HDFS Namenode.</description>
+		<value-attributes>
+			<empty-value-valid>true</empty-value-valid>
+		</value-attributes>
+	</property>
+	<property>
+		<name>httpfs.hadoop.config.dir</name>
+		<value>/etc/hadoop/conf/</value>
+		<display-name>HDFS configuration directory</display-name>
+		<description>Location of the Hadoop configuration directory</description>
+	</property>
 </configuration>
