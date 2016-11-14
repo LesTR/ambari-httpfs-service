@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>content</name>
+		<description>This is the jinja template for httpfs-env.sh file</description>
+		<value>
+#!/bin/bash
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License. See accompanying LICENSE file.
+#
+
+# Set httpfs specific environment variables here.
+
+# Settings for the Embedded Tomcat that runs HttpFS
+# Java System properties for HttpFS should be specified in this variable
+#
+# export CATALINA_OPTS=""
+
+# HttpFS temporary directory
+#
+# export HTTPFS_TEMP=${HTTPFS_HOME}/temp
+
+# The HTTP port used by HttpFS
+#
+export HTTPFS_HTTP_PORT={{ httpfs_server_port }}
+
+# The Admin port used by HttpFS
+#
+export HTTPFS_ADMIN_PORT={{ httpfs_server_admin_port }}
+
+# The hostname HttpFS server runs on
+#
+# export HTTPFS_HTTP_HOSTNAME=`hostname -f`
+
+# Indicates if HttpFS is using SSL
+#
+# export HTTPFS_SSL_ENABLED=false
+
+# The location of the SSL keystore if using SSL
+#
+# export HTTPFS_SSL_KEYSTORE_FILE=${HOME}/.keystore
+
+# The password of the SSL keystore if using SSL
+#
+# export HTTPFS_SSL_KEYSTORE_PASS=password
+
+source /etc/hadoop/conf/hadoop-env.sh
+
+### Added to assist with locating the right configuration directory
+export HTTPFS_CONFIG=/etc/hadoop-httpfs/conf
+
+### Removing the original HARD CODED Version reference
+export HADOOP_HOME=${HADOOP_HOME:-/usr/hdp/current/hadoop-client}
+export HADOOP_LIBEXEC_DIR=${HADOOP_HOME}/libexec
+
+# Catalina directories for starting and finding the httpfs application
+export CATALINA_BASE=/usr/hdp/current/hadoop-httpfs
+export HTTPFS_CATALINA_HOME=/etc/hadoop-httpfs/tomcat-deployment
+
+# Set log directory
+export HTTPFS_LOG={{ httpfs_log_dir }}
+
+# Set a tmp directory for httpfs to store interim files
+export HTTPFS_TEMP=/tmp/httpfs
+
+# There is a full mess in other scripts about this variable. Don't change it!
+export CATALINA_PID=/run/hadoop-httpfs/hadoop-httpfs-httpfs.pid
+</value>
+	</property>
+</configuration>

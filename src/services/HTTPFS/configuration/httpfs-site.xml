@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>httpfs.buffer.size</name>
+		<value>4096</value>
+		<display-name>Buffer size</display-name>
+		<description>The buffer size used by a read/write request when streaming data from/to HDFS.</description>
+	</property>
+	<property>
+		<name>httpfs.authentication.type</name>
+		<value>simple</value>
+		<description>Defines the authentication mechanism used by httpfs for its HTTP clients. Valid values are 'simple' and 'kerberos'. If using 'simple' HTTP clients must specify the username with the 'user.name' query string parameter. If using 'kerberos' HTTP clients must use HTTP SPNEGO.</description>
+		<display-name>Authentication</display-name>
+		<value-attributes>
+			<type>value-list</type>
+			<entries>
+				<entry>
+					<label>Simple</label>
+					<value>simple</value>
+				</entry>
+				<entry>
+					<label>Kerberos</label>
+					<value>kerberos</value>
+				</entry>
+			</entries>
+			<selection-cardinality>1</selection-cardinality>
+		</value-attributes>
+	</property>
+</configuration>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>user</name>
+		<value>httpfs</value>
+		<display-name>Username</display-name>
+		<description>HTTPFS username</description>
+		<property-type>USER</property-type>
+	</property>
+	<property>
+		<name>group</name>
+		<value>hadoop</value>
+		<display-name>Group</display-name>
+		<description>HTTPFS group</description>
+		<property-type>GROUP</property-type>
+	</property>
+	<property>
+		<name>port</name>
+		<value>14000</value>
+		<display-name>Port</display-name>
+		<description>The HTTP port for the HTTPFS server.</description>
+	</property>
+	<property>
+		<name>admin.port</name>
+		<value>14001</value>
+		<display-name>Admin port</display-name>
+		<description>The HTTP port for the administration of HTTPFS server.</description>
+	</property>
+	<property>
+		<name>conf_dir</name>
+		<value>/etc/hadoop-httpfs/conf</value>
+		<display-name>Configuration directory</display-name>
+		<description>Configuration directory</description>
+	</property>
+	<property>
+		<name>httpfs_log_dir</name>
+		<value>/var/log/hadoop/httpfs</value>
+		<display-name>Log dir</display-name>
+		<description>Logging directory</description>
+	</property>
+</configuration>
