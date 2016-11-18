@@ -1,0 +1,67 @@
+{
+  "services": [
+    {
+      "name": "HTTPFS",
+      "identities": [
+        {
+          "name": "/spnego",
+          "principal": {
+            "value": "HTTP/${clusterHostInfo/httpfs_gateway_hosts}@${realm}",
+            "configuration": "httpfs-site/httpfs.authentication.kerberos.principal"
+          },
+          "keytab": {
+            "configuration": "httpfs-site/httpfs.authentication.kerberos.keytab"
+          }
+        },
+        {
+          "name": "/smokeuser"
+        }
+      ],
+      "configurations": [
+        {
+          "httpfs-site": {
+            "httpfs.authentication.type": "kerberos",
+            "httpfs.hadoop.authentication.type": "kerberos",
+            "kerberos.realm": "${realm}"
+          }
+        }
+      ],
+      "components": [
+        {
+          "name": "HTTPFS_GATEWAY",
+          "identities": [
+            {
+              "name": "httpfs_principal",
+              "principal": {
+                "value": "${httpfs/user}/${clusterHostInfo/httpfs_gateway_hosts}@${realm}",
+                "type" : "service",
+                "configuration": "httpfs-site/httpfs.hadoop.authentication.kerberos.principal",
+                "local_username": "${httpfs/user}"
+              },
+              "keytab": {
+                "file": "${keytab_dir}/httpfs.service.keytab",
+                "owner": {
+                  "name": "${httpfs/user}",
+                  "access": "r"
+                },
+                "group": {
+                  "name": "${cluster-env/user_group}",
+                  "access": ""
+                },
+                "configuration": "httpfs-site/httpfs.hadoop.authentication.kerberos.keytab"
+              }
+            }
+          ],
+          "configurations": [
+            {
+              "core-site": {
+                "hadoop.proxyuser.${httpfs/user}.groups": "${hadoop-env/proxyuser_group}",
+                "hadoop.proxyuser.${httpfs/user}.hosts": "${clusterHostInfo/httpfs_gateway_hosts}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

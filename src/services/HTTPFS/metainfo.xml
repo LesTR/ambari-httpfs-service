@@ -9,7 +9,7 @@
 			<version>2.7.1</version>
 			<components>
 				<component>
-					<name>GATEWAY</name>
+					<name>HTTPFS_GATEWAY</name>
 					<displayName>HTTPFS gateway</displayName>
 					<category>MASTER</category>
 					<cardinality>0+</cardinality>
