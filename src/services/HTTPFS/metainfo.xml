@@ -26,13 +26,6 @@
 								<enabled>true</enabled>
 							</auto-deploy>
 						</dependency>
-						<dependency>
-							<name>SUPERVISOR/DAEMON</name>
-							<scope>host</scope>
-							<auto-deploy>
-								<enabled>true</enabled>
-							</auto-deploy>
-						</dependency>
 					</dependencies>
 				</component>
 			</components>
