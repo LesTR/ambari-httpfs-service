@@ -4,7 +4,7 @@ Simple ambari extension for HttpFS hdfs service. Still WIP.
 Supported OS: Ubuntu 14.04 LTS
 
 Supported Ambari version:
-2.2 - branch-2.2
+2.2 - ambari-2.2
 2.4 - master (WIP)
 
 Know issues/todos:
