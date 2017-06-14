@@ -27,13 +27,13 @@ class Httpfs_component(Script):
         Directory( params.httpfs_conf_dir,
             owner     = params.httpfs_user,
             group     = params.httpfs_group,
-            recursive = True,
+            create_parents = True,
             mode      = 0755,
         )
         Directory( params.httpfs_log_dir,
             owner     = params.httpfs_user,
             group     = params.httpfs_group,
-            recursive = True,
+            create_parents = True,
             mode      = 0755,
         )
         Logger.info( format("Creating {params.httpfs_conf_dir}/httpfs-env.sh config file"))
